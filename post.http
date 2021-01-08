@@ -1,9 +1,9 @@
-POST http://belajar-vue.test/api/transaction HTTP/1.1
+PUT http://belajar-vue.test/api/transaction/3 HTTP/1.1
 Accept: application/json
 content-type: application/json
 
 {
-    "title": "Hadiah",
-    "amount": "10000",
+    "title": "Hadiah Revisi",
+    "amount": "100001",
     "type": "revenue"
 }

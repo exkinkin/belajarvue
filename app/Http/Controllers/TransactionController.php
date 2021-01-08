@@ -102,6 +102,7 @@ class TransactionController extends Controller
     public function update(Request $request, $id)
     {
         $transaction = Transaction::findOrFail($id);
+
         $validator = Validator::make($request->all() , [
             'title' => ['required'],
             'amount' => ['required' , 'numeric'],
@@ -113,13 +114,13 @@ class TransactionController extends Controller
         }
 
         try {
-            $transaction = Transaction::create($request->all());
+            $transaction->update($request->all());
             $response = [
-                'message' => 'Transaction created',
+                'message' => 'Transaction updated',
                 'data' => $transaction,
             ];
 
-            return response()->json($response, Response::HTTP_CREATED);
+            return response()->json($response, Response::HTTP_OK);
 
         } catch (QueryException $e) {
             return response()->json([
