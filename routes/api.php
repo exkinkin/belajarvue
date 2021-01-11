@@ -18,8 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//get all data
 Route::get('/transaction', [TransactionController::class , 'index']);
+
+//post a data
 Route::post('/transaction', [TransactionController::class , 'store']);
+
+//update an existing data
 Route::put('/transaction/{id}', [TransactionController::class , 'update']);
+
+//show an existing data
 Route::get('transaction/{id}', [TransactionController::class, 'show']);
+
+//delete an existing data
+Route::delete('/transaction/{id}', [TransactionController::class , 'destroy']);
